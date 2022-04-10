@@ -1,0 +1,36 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: Bigdata
+  profiles:
+    active: dev
+  kafka:
+#    consumer:
+#      bootstrap-servers: localhost:9092
+      # 配置消费者消息offset是否自动重置(消费者重连会能够接收最开始的消息)
+#      auto-offset-reset: earliest
+#    producer:
+    bootstrap-servers: localhost:9092
+      # 发送的对象信息变为json格式
+    value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#    sasl:
+#      mechanism: PLAIN
+#      jaas:
+#        config: org.apache.kafka.common.security.plain.PlainLoginModule required
+#          username: ''
+#          password: '';
+#    security:
+#      protocol: SASL_SSL
+#    session:
+#      timeout:
+#        ms: 45000
+kafka:
+  topic:
+    carparking-topic1: carpark-availability
+elasticsearch:
+  host: "localhost:9200"
+#  host: "https://ebd-practice-module-32d45a.es.ap-southeast-1.aws.found.io:9243/"
+  username: '${USERNAME}'
+  password: '${PASSWORD}'
